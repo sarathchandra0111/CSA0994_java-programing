@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class MinMaxSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        long[] arr = new long[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextLong();
+        }
+        long totalSum = 0;
+        for (int i = 0; i < n; i++) {
+            totalSum += arr[i];
+        }
+        long minSum = totalSum - arr[0];
+        long maxSum = totalSum - arr[0];
+        for (int i = 1; i < n; i++) {
+            long currentSum = totalSum - arr[i];
+            if (currentSum < minSum) {
+                minSum = currentSum;
+            }
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+            }
+        }
+        System.out.println(minSum + " " + maxSum);
+
+        scanner.close();
+    }
+}
